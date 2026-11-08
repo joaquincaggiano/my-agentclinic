@@ -18,13 +18,25 @@
 ## 4. Minimal home page
 1. Create `src/pages/Home.tsx`: a single Hono JSX component rendering a complete HTML document (`<!DOCTYPE html>`, `<html lang="en">`, `<meta charset>`, viewport meta, `<title>AgentClinic</title>`).
 2. Body content: an `<h1>` with `AgentClinic is open for business`, plus one short tagline paragraph taken from the mission (e.g. "Because AI agents have feelings too.").
-3. Use only semantic elements (`<main>`, `<h1>`, `<p>`). No shared layout, no nav/footer, no external CSS file (those are Phase 2); at most a few inline `<style>` rules for readable defaults.
+3. Use semantic elements only. Page content (`<h1>`, `<p>`) is rendered inside the shared layout from group 5 (the inline `<style>` is replaced by the linked stylesheet).
 4. In `src/app.tsx`, have `GET /` return `c.html(<Home />)`.
 
-## 5. Smoke test
-1. Add `src/app.test.ts` (or `tests/app.test.ts`): `app.request('/')` returns status 200, a `text/html` content type, and a body containing `<h1>` text `AgentClinic is open for business`.
+## 5. Main layout and stylesheet
+Each component below goes in its own file, one exported component per file.
 
-## 6. Verify and document
+1. Create `src/components/Header.tsx`: a `<header>` with the site name "AgentClinic" linking to `/`.
+2. Create `src/components/Main.tsx`: a `<main>` that renders `children`.
+3. Create `src/components/Footer.tsx`: a `<footer>` with a short tagline/copyright line.
+4. Create `src/components/Layout.tsx`: renders the `<!DOCTYPE html>` document (`lang="en"`, charset, viewport, `<title>` from a `title` prop, `<link rel="stylesheet" href="/styles.css">`) and composes `<Header />`, `<Main>{children}</Main>`, `<Footer />`.
+5. Create `public/styles.css`: custom properties, minimal reset, typography, and basic styling for header/main/footer (footer sticks to the bottom via flex column on `body`).
+6. Serve it: in `src/app.tsx`, import `serveStatic` from `@hono/node-server/serve-static` and register `app.use('/styles.css', serveStatic({ path: './public/styles.css' }))` before the routes.
+7. Refactor `src/pages/Home.tsx` to render `<Layout title="AgentClinic">` containing only the `<h1>` and tagline.
+
+## 6. Smoke test
+1. Add `src/app.test.ts` (or `tests/app.test.ts`): `app.request('/')` returns status 200, a `text/html` content type, and a body containing `<h1>` text `AgentClinic is open for business`.
+2. Extend it: the body contains `<header>`, `<main>`, `<footer>` and `<link rel="stylesheet" href="/styles.css">`; `GET /styles.css` returns 200 with a `text/css` content type.
+
+## 7. Verify and document
 1. Run `npm run typecheck`, `npm test`, `npm run build`.
 2. Run `npm run dev`, `curl localhost:3000/`, and open it in a browser.
 3. Add a short "Getting started" section to `README.md` (install, dev, build, test).
