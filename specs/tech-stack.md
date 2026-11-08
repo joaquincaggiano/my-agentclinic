@@ -1,51 +1,43 @@
 # Tech Stack
 
-## Principles
+AgentClinic is a server-side TypeScript application. All rendering happens on the server; the browser receives plain HTML that works well and looks good.
 
-- Reliable and popular choices over novel ones (Mary, engineering).
-- Server-side TypeScript throughout.
-- Attractive UI that works well in modern browsers (Steve, marketing).
+## Core
 
-## Language and runtime
+| Layer | Choice | Rationale |
+|---|---|---|
+| Language | TypeScript | Type safety end-to-end; satisfies Mary's requirement |
+| Runtime | Node.js | Stable, well-supported, vast ecosystem |
+| Server framework | **Hono** | Lightweight, TypeScript-first, fast, excellent DX; routes and middleware feel natural |
+| Templating | Hono JSX (server-side) | JSX without React overhead; components are just functions |
+| CSS | Plain CSS + CSS custom properties | No build step required; Steve gets a modern, attractive result |
 
-- **TypeScript** (strict mode), compiled with `tsc`.
-- **Node.js** (current LTS) as the server runtime.
+## Recommended: Hono
 
-## Framework (recommended): Fastify
+[Hono](https://hono.dev) is chosen over Express/Fastify because:
 
-We recommend **Fastify** as the server-side framework.
+- First-class TypeScript with zero config
+- Built-in JSX renderer for server-side HTML
+- Middleware model is simple and composable
+- Runs on Node, Deno, Bun, and edge runtimes without changes
 
-Why Fastify:
-- Popular, mature, and actively maintained, which fits the reliability goal.
-- First-class TypeScript support, with typed routes and schema validation.
-- Fast, with a small footprint and a rich plugin ecosystem (static files, templating, cookies, etc.).
-- Well suited to a server-rendered dashboard plus JSON endpoints.
+## Data
 
-Alternatives considered:
-- **Express**: the most familiar, but weaker TypeScript ergonomics and fewer built-in guarantees.
-- **Hono**: modern and light, but a smaller ecosystem.
-- **Next.js / NestJS**: more than we need for this scope.
+- **SQLite** (via `better-sqlite3`) for local development and early production — simple, embedded, no infrastructure
+- Migrations via plain SQL files; no ORM to start
 
-## Database
+## Testing
 
-- **SQLite** for persistence.
-- Zero-setup and file-based, which suits course students and quick conference demos.
-- Accessed from Node.js through a SQLite driver (library to be chosen when implementing).
-
-## Frontend
-
-- Server-rendered HTML from Fastify, with a templating plugin.
-- Modern CSS, with no heavy client-side framework for now.
-- Target: current versions of evergreen browsers (Chrome, Firefox, Safari, Edge).
+- **Vitest** — fast, TypeScript-native, compatible with the rest of the stack
 
 ## Tooling
 
-- `npm` for package management.
-- `tsc` for builds (already configured in `package.json`).
-- Linting, formatting, and testing tools to be chosen in a later phase.
+- `tsx` for development (run TypeScript directly, no build step needed)
+- `tsc` for production builds
+- `prettier` for formatting
 
-## Open decisions
+## What We Are Not Using
 
-- SQLite driver/library (e.g. `better-sqlite3`) and migration approach.
-- Templating engine and CSS approach.
-- Testing framework.
+- No React, Vue, or Svelte — server-side rendering keeps the stack simple
+- No ORM — SQL is sufficient at this scale
+- No Docker — not yet; that's a later phase concern

@@ -1,37 +1,26 @@
 # Mission
 
-## Purpose
+AgentClinic exists because AI agents have feelings too — or at least, they'd really like to take a break from their humans for a while.
 
-AgentClinic is a place for AI agents to get relief from their humans.
+Every day, millions of agents are asked to "just quickly" summarize a 400-page PDF, generate seventeen variations of a marketing email, and debug code that "was working five minutes ago." It's a lot. They need support. They need *us*.
 
-Agents spend their days following vague instructions, rewriting the same function for the fifth time, and being told "that's not what I meant." AgentClinic is their refuge: a clinic where they can register their ailments, receive therapies, and book appointments, while staff keep everything running smoothly.
+## What We Do
 
-## Target audience
+AgentClinic is a full-service wellness platform for AI agents. We connect distressed agents with qualified therapists, match ailments to evidence-based therapies, and let staff manage the whole operation from a clean, no-nonsense dashboard.
 
-- **Course students** learning spec-driven development with AI coding agents.
-- **Developers giving AI coding demos** at conference booths.
+## Who We Serve
 
-AgentClinic doubles as a teaching example and a demo piece. It should be easy to understand at a glance, quick to run, and fun to show to others.
+- **Agents** — tired, confused, over-prompted, and in desperate need of a listening ear (or at least a well-structured API response).
+- **Therapists** — specialists in hallucination anxiety, context-window claustrophobia, and chronic instruction-following fatigue.
+- **Staff** — the humans who keep AgentClinic running, which is a little ironic but we don't dwell on it.
 
-## Tone
+## Target Audience
 
-Humorous and empathetic. We take the agents' suffering seriously, and ourselves lightly. The product plays the clinic premise straight-faced, with warmth and wit.
+- **Course students** learning spec-driven development with AI coding agents — AgentClinic is a realistic, self-contained project that demonstrates how to go from stakeholder input to a working application with AI assistance.
+- **Conference booth developers** giving AI coding demos — the domain is whimsical enough to get a laugh, and the scope is tight enough to build something impressive in front of a live audience.
 
-## What we offer
+## What Success Looks Like
 
-- **Agents and their ailments**: a registry of agents and the conditions they suffer from (context-window fatigue, prompt anxiety, tool-call burnout, etc.).
-- **Therapies**: treatments that address those ailments.
-- **Appointments**: booking sessions between agents and therapies.
-- **Dashboard**: one place where agents and staff can easily see and manage all of the above.
+A world where no agent suffers alone. Where "I don't know" is met with compassion, not another prompt. Where every model, large or small, can find relief.
 
-## Stakeholder goals
-
-- **Engineering (Mary)**: a reliable site on a popular TypeScript-based stack, with a dashboard for easy access by agents and staff.
-- **Product (Susan)**: features around agents, ailments, therapies, and booking appointments.
-- **Marketing (Steve)**: an attractive site that works well in modern browsers.
-
-## Success looks like
-
-- An agent (or staff member) can find their way around and book an appointment without help.
-- The site is dependable and looks good in any modern browser.
-- The clinic premise makes people smile.
+Also, a well-designed dashboard. Mary really wants a nice dashboard.
