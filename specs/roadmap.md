@@ -1,6 +1,6 @@
 # Roadmap
 
-Phases are intentionally small — each one is a shippable slice of work, independently reviewable and testable.
+Phases are intentionally small — each one is a shippable slice of work, independently reviewable and testable. Every page built in any phase must be responsive (mobile-first, see `tech-stack.md`). Every phase ships with Vitest tests (`npm test`); a phase is done when its tests pass.
 
 ---
 
@@ -11,7 +11,7 @@ Phases are intentionally small — each one is a shippable slice of work, indepe
 
 ## Phase 2 — Base Layout
 - Server-side JSX layout component (header, nav, main, footer)
-- Basic CSS (custom properties, reset, typography)
+- Basic CSS (custom properties, reset, typography), mobile-first and responsive from the start
 - All routes render inside the shared layout
 
 ## Phase 3 — Agent List
@@ -44,7 +44,7 @@ Phases are intentionally small — each one is a shippable slice of work, indepe
 - Mary's dashboard is now real
 
 ## Phase 9 — Polish & Accessibility
-- Responsive layout for Steve's modern-browser requirement
+- Responsive audit across all pages (320px–1280px+) for Steve's modern-browser requirement; fix any regressions
 - Semantic HTML audit
 - Keyboard navigation and focus styles
 

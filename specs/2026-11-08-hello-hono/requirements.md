@@ -10,6 +10,8 @@ In scope (from `specs/roadmap.md`, Phase 1, plus one addition):
 
 - A main layout component composed of three subcomponents (header, main, footer), each in its own file, plus a linked CSS file
 
+- Responsive design: the layout and stylesheet are mobile-first and work from ~320px up to desktop widths (per `specs/tech-stack.md`)
+
 Out of scope (later phases): nav links, full CSS design system, SQLite, any other routes, Prettier, logging, error pages.
 
 ## Decisions
@@ -23,8 +25,9 @@ Out of scope (later phases): nav links, full CSS design system, SQLite, any othe
 - **Home page:** a standalone Hono JSX component (`src/pages/Home.tsx`) rendering a full HTML document with an `<h1>` of `AgentClinic is open for business` and a short mission tagline. Uses Hono JSX (per tech stack) via `jsx: react-jsx` / `jsxImportSource: hono/jsx`. It renders inside the shared `Layout` component and has no inline styles.
 - **Layout components:** `Layout`, `Header`, `Main` and `Footer` each live in their own file under `src/components/` (`Layout.tsx`, `Header.tsx`, `Main.tsx`, `Footer.tsx`), one exported component per file. `Layout` imports the other three and composes them; no component is defined inline inside another's file.
 - **Stylesheet:** a plain CSS file at `public/styles.css`, served at `/styles.css` via `serveStatic` and linked from `Layout`'s `<head>` with `<link rel="stylesheet" href="/styles.css">`.
+- **Responsive design:** the stylesheet is mobile-first (base styles for small screens, `min-width` media queries for larger), uses fluid units (`rem`, `clamp()`, `%`) and a `max-width` content container, and never scrolls horizontally. The viewport meta tag is provided by `Layout`.
 - **Response type:** `text/html`, status 200. The roadmap's plain-text wording is satisfied by the `<h1>` content.
-- **Testing exception:** the scope is roadmap-only, but validation requires an automated check, so a single minimal Vitest smoke test of `/` is added as a dev dependency. No other test infrastructure is added.
+- **Testing:** per `tech-stack.md`, Vitest tests are the validation mechanism. They live next to the code as `*.test.ts` and exercise routes through `app.request()`. Phase 1 covers `/` and `/styles.css`; no other test infrastructure is added.
 
 ## Context
 
