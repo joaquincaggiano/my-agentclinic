@@ -22,7 +22,7 @@ The implementation is successful and mergeable when every item below passes.
 - [ ] `PORT=4000 npm run dev` serves on port 4000.
 - [ ] `npm run build && npm start` serves the same page from compiled output.
 - [ ] `http://localhost:3000/styles.css` returns `200` with `content-type: text/css`, and the page `<head>` links to it.
-- [ ] An unknown path (e.g. `/nope`) returns Hono's default 404 (custom error pages are Phase 10).
+- [ ] An unknown path (e.g. `/nope`) returns Hono's default 404 (custom error pages are Phase 7).
 
 ## Merge criteria
 
