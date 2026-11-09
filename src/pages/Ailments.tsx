@@ -1,8 +1,8 @@
 import { Layout } from '../components/Layout.js'
-import type { Ailment } from '../repositories/agents.js'
+import type { AilmentWithTherapies } from '../repositories/ailments.js'
 
 type AilmentsProps = {
-  ailments: Ailment[]
+  ailments: AilmentWithTherapies[]
 }
 
 export const Ailments = ({ ailments }: AilmentsProps) => (
@@ -14,6 +14,9 @@ export const Ailments = ({ ailments }: AilmentsProps) => (
         <li class="card">
           <h2>{a.name}</h2>
           <p>{a.description}</p>
+          {a.therapies.length > 0 ? (
+            <p class="meta">Recommended: {a.therapies.map((t) => t.name).join(', ')}</p>
+          ) : null}
         </li>
       ))}
     </ul>

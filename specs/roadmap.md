@@ -19,17 +19,17 @@ Phases are intentionally small — each one is a shippable slice of work, indepe
 - `/ailments` list page
 - Link agents to one or more ailments
 
-## Phase 3 — Therapies Catalog
+## Phase 3 — Therapies Catalog ✅ Complete
 - `therapies` table + seed data
 - `/therapies` list page
 - Map ailments → recommended therapies
 
-## Phase 4 — Appointment Booking
+## Phase 4 — Appointment Booking ✅ Complete
 - `appointments` table (agent, therapist, datetime, status)
 - Form to book an appointment from an agent's detail page
 - Basic validation and confirmation page
 
-## Phase 5 — Staff Dashboard
+## Phase 5 — Staff Dashboard ✅ Complete
 - `/dashboard` with summary counts: agents, open appointments, ailments in-flight
 - Simple table views for staff to manage records
 - Mary's dashboard is now real
@@ -40,6 +40,7 @@ Phases are intentionally small — each one is a shippable slice of work, indepe
 - Keyboard navigation and focus styles
 
 ## Phase 7 — Hardening
+_Pulled into the MVP: custom 404/500 pages and server-side input validation on all forms. Still open: logging middleware and a full sanitization/CSRF review._
 - Error pages (404, 500)
 - Input sanitization on all forms
 - Basic logging middleware

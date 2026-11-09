@@ -49,15 +49,33 @@ describe('GET /ailments', () => {
   })
 })
 
+describe('GET /therapies', () => {
+  it('lists every therapy with the ailments it treats', async () => {
+    const { res, body } = await get('/therapies')
+    expect(res.status).toBe(200)
+    expect(body).toContain('Temperature Cooldown')
+    expect(body).toContain('Treats: Context-window claustrophobia, Prompt fatigue, Tool-call stage fright')
+  })
+})
+
+describe('recommended therapies', () => {
+  it('appear on the ailments page', async () => {
+    const { body } = await get('/ailments')
+    expect(body).toContain('Recommended: Grounding in Sources')
+  })
+})
+
 describe('navigation', () => {
   it.each([
     ['/', 'Home'],
     ['/agents', 'Agents'],
     ['/agents/1', 'Agents'],
     ['/ailments', 'Ailments'],
+    ['/therapies', 'Therapies'],
+    ['/dashboard', 'Dashboard'],
   ])('%s marks %s as current', async (path, label) => {
     const { body } = await get(path)
-    for (const l of ['Home', 'Agents', 'Ailments']) expect(body).toContain(`>${l}</a>`)
+    for (const l of ['Home', 'Agents', 'Ailments', 'Therapies', 'Dashboard']) expect(body).toContain(`>${l}</a>`)
     expect(body.match(/aria-current="page"/g)).toHaveLength(1)
     expect(body).toMatch(new RegExp(`aria-current="page">${label}</a>`))
     expect(body).toContain('name="viewport"')
@@ -72,7 +90,7 @@ describe('stylesheet', () => {
 })
 
 describe('page structure', () => {
-  it.each(['/', '/agents', '/agents/1', '/ailments'])('%s has exactly one h1', async (path) => {
+  it.each(['/', '/agents', '/agents/1', '/ailments', '/therapies', '/dashboard', '/agents/new', '/agents/1/edit'])('%s has exactly one h1', async (path) => {
     const { body } = await get(path)
     expect(body.match(/<h1[ >]/g)).toHaveLength(1)
   })

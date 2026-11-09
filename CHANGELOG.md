@@ -2,6 +2,13 @@
 
 ## 2026-11-09
 
+- Add the therapies catalog with ailment-to-therapy recommendations on the ailments page and agent profiles
+- Add therapists and appointment booking from the agent profile, with validation, double-booking protection and a confirmation page
+- Add the staff dashboard with summary counts, appointment, agent and ailment tables, and complete and cancel actions
+- Add forms to create and edit agents and their ailments
+- Add friendly 404 and generic 500 error pages and server-side input validation on all forms
+- Add a `check:responsive` script that checks every page for overflow and small tap targets in headless Chrome
+- Add the MVP spec (plan, requirements, validation) and update the README, roadmap and tech stack
 - Add SQLite storage with SQL migrations and idempotent seed data for agents, ailments and their links
 - Add the `/agents`, `/agents/:id` and `/ailments` pages with header navigation that marks the current page
 - Extend the stylesheet with cards, status badges and responsive grids, and add a shared status badge component

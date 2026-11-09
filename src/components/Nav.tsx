@@ -2,6 +2,8 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/agents', label: 'Agents' },
   { href: '/ailments', label: 'Ailments' },
+  { href: '/therapies', label: 'Therapies' },
+  { href: '/dashboard', label: 'Dashboard' },
 ]
 
 const isActive = (href: string, path: string) =>

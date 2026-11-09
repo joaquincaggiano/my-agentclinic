@@ -9,7 +9,8 @@
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/index.js",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:responsive": "npm run build && node scripts/check-responsive.mjs"
   },
   "dependencies": {
     "@hono/node-server": "^2.1.6",
