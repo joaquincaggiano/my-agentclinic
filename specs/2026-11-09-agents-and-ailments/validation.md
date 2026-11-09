@@ -7,13 +7,13 @@ The implementation is successful and mergeable when every item below passes.
 - [x] `npm install` completes cleanly (including native `better-sqlite3` build).
 - [x] `npm run typecheck` exits 0 with no `any` escapes in `src/`.
 - [x] `npm test` passes, covering:
-  - [ ] Migrations create `agents`, `ailments`, `agent_ailments`; re-running is a no-op; invalid status and dangling FKs are rejected.
-  - [ ] Seeding populates agents and ailments, links each agent to at least one ailment, and is idempotent.
-  - [ ] `GET /agents` → 200 `text/html`, lists every seeded agent with model type and status, linking to `/agents/:id`.
-  - [ ] `GET /agents/:id` → 200 with name, model type, status and that agent's ailments; unknown or non-numeric id → 404.
-  - [ ] `GET /ailments` → 200, lists every seeded ailment.
-  - [ ] Every page includes the nav (Home, Agents, Ailments) with the current page marked `aria-current="page"`, and the viewport meta tag.
-  - [ ] `/styles.css` defines CSS custom properties and contains `min-width` media queries.
+  - [x] Migrations create `agents`, `ailments`, `agent_ailments`; re-running is a no-op; invalid status and dangling FKs are rejected.
+  - [x] Seeding populates agents and ailments, links each agent to at least one ailment, and is idempotent.
+  - [x] `GET /agents` → 200 `text/html`, lists every seeded agent with model type and status, linking to `/agents/:id`.
+  - [x] `GET /agents/:id` → 200 with name, model type, status and that agent's ailments; unknown or non-numeric id → 404.
+  - [x] `GET /ailments` → 200, lists every seeded ailment.
+  - [x] Every page includes the nav (Home, Agents, Ailments) with the current page marked `aria-current="page"`, and the viewport meta tag.
+  - [x] `/styles.css` defines CSS custom properties and contains `min-width` media queries.
 - [x] `npm run build` succeeds and `npm start` serves the app (migrations found at runtime).
 
 ## Manual
