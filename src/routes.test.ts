@@ -19,9 +19,11 @@ describe('home page document', () => {
 })
 
 describe('unknown routes', () => {
-  it('returns Hono’s default 404', async () => {
+  it('returns the friendly 404 page', async () => {
     const res = await app.request('/nope')
     expect(res.status).toBe(404)
+    expect(res.headers.get('content-type')).toContain('text/html')
+    expect(await res.text()).toContain('<h1>Page not found</h1>')
   })
 
   it('only allows GET on /', async () => {
