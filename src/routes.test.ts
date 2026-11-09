@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import app from './app.js'
+import { createTestApp } from './testing.js'
+
+const { app } = createTestApp()
 
 describe('home page document', () => {
   it('declares language, charset, viewport and title', async () => {

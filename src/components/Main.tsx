@@ -1,5 +1,9 @@
 import type { Child } from 'hono/jsx'
 
-export const Main = ({ children }: { children?: Child }) => (
+type MainProps = {
+  children?: Child
+}
+
+export const Main = ({ children }: MainProps) => (
   <main class="site-main">{children}</main>
 )
