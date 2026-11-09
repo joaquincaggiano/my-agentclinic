@@ -32,7 +32,7 @@ The web UI is responsive: every page must be usable and look good from ~320px ph
 - **No horizontal scrolling** at any width; long text wraps, and media and tables scale or scroll within their own container.
 - **Touch-friendly:** interactive targets are at least 44×44px.
 - **Plain CSS only:** no CSS framework or preprocessor.
-- **Verification:** automated tests check the viewport meta and the presence of responsive rules; visual checks at 320px, 768px and 1280px are part of each feature's manual validation.
+- **Verification:** automated tests check the viewport meta and the presence of responsive rules. `npm run check:responsive` (headless Chrome, needs Chrome/Chromium; `CHROME_PATH` overrides detection) loads every page at 320px, 768px and 1280px and fails on horizontal overflow or block-level tap targets under 44px. A visual check in a real browser at those widths remains part of each feature's manual validation.
 
 ## Data
 
