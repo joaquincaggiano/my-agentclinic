@@ -15,6 +15,6 @@ npm install        # install dependencies
 npm run dev        # dev server with reload at http://localhost:3000 (override with PORT=4000)
 npm run build      # compile to dist/
 npm start          # run the compiled build
-npm test           # run Vitest smoke test
+npm test           # run Vitest tests
 npm run typecheck  # tsc --noEmit
 ```

@@ -11,6 +11,11 @@ describe('GET /', () => {
     expect(body).toContain('<h1>AgentClinic is open for business</h1>')
   })
 
+  it('declares a responsive viewport', async () => {
+    const body = await (await app.request('/')).text()
+    expect(body).toMatch(/<meta[^>]*name="viewport"[^>]*content="width=device-width, initial-scale=1"/)
+  })
+
   it('renders inside the shared layout', async () => {
     const body = await (await app.request('/')).text()
     expect(body).toContain('<header')
@@ -25,5 +30,11 @@ describe('GET /styles.css', () => {
     const res = await app.request('/styles.css')
     expect(res.status).toBe(200)
     expect(res.headers.get('content-type')).toContain('text/css')
+  })
+
+  it('is mobile-first and responsive', async () => {
+    const css = await (await app.request('/styles.css')).text()
+    expect(css).toMatch(/@media \(min-width:/)
+    expect(css).not.toMatch(/@media \(max-width:/)
   })
 })

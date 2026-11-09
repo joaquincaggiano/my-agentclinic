@@ -9,7 +9,7 @@
 ## 2. TypeScript configuration
 1. Update `tsconfig.json`: `target` ES2022, `module` and `moduleResolution` NodeNext, keep `strict`, `outDir: dist`, `rootDir: src`.
 2. Enable Hono JSX: `"jsx": "react-jsx"` and `"jsxImportSource": "hono/jsx"`.
-3. Exclude test files from the production build output if they live in `src` (or place tests in `tests/` and include them in typechecking only).
+3. Exclude test files from the production build output (tests live in `src` as `*.test.ts`).
 
 ## 3. App and server
 1. Create `src/app.tsx`: `const app = new Hono()`, register the `/` route (wired to the home page in group 4), `export default app`.
@@ -28,13 +28,13 @@ Each component below goes in its own file, one exported component per file.
 2. Create `src/components/Main.tsx`: a `<main>` that renders `children`.
 3. Create `src/components/Footer.tsx`: a `<footer>` with a short tagline/copyright line.
 4. Create `src/components/Layout.tsx`: renders the `<!DOCTYPE html>` document (`lang="en"`, charset, viewport, `<title>` from a `title` prop, `<link rel="stylesheet" href="/styles.css">`) and composes `<Header />`, `<Main>{children}</Main>`, `<Footer />`.
-5. Create `public/styles.css`: custom properties, minimal reset, typography, and basic styling for header/main/footer (footer sticks to the bottom via flex column on `body`).
+5. Create `public/styles.css`: custom properties, minimal reset, typography, and basic styling for header/main/footer (footer sticks to the bottom via flex column on `body`). Make it mobile-first: fluid heading size via `clamp()`, comfortable padding on small screens increased by a `min-width` media query, `overflow-wrap` so long words never overflow, and header/footer that wrap gracefully.
 6. Serve it: in `src/app.tsx`, import `serveStatic` from `@hono/node-server/serve-static` and register `app.use('/styles.css', serveStatic({ path: './public/styles.css' }))` before the routes.
 7. Refactor `src/pages/Home.tsx` to render `<Layout title="AgentClinic">` containing only the `<h1>` and tagline.
 
-## 6. Smoke test
-1. Add `src/app.test.ts` (or `tests/app.test.ts`): `app.request('/')` returns status 200, a `text/html` content type, and a body containing `<h1>` text `AgentClinic is open for business`.
-2. Extend it: the body contains `<header>`, `<main>`, `<footer>` and `<link rel="stylesheet" href="/styles.css">`; `GET /styles.css` returns 200 with a `text/css` content type.
+## 6. Tests
+1. Add `src/app.test.ts` (tests live next to the code): `app.request('/')` returns status 200, a `text/html` content type, and a body containing `<h1>` text `AgentClinic is open for business`.
+2. Extend it: the body contains `<header>`, `<main>`, `<footer>` and `<link rel="stylesheet" href="/styles.css">`; `GET /styles.css` returns 200 with a `text/css` content type and contains a `min-width` media query (mobile-first); the page has the viewport meta tag.
 
 ## 7. Verify and document
 1. Run `npm run typecheck`, `npm test`, `npm run build`.
