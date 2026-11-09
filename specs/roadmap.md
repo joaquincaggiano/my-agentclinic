@@ -9,7 +9,7 @@ Phases are intentionally small — each one is a shippable slice of work, indepe
 - Single `/` route returning "AgentClinic is open for business"
 - Confirm TypeScript types work end-to-end
 
-## Phase 2 — Agents & Ailments
+## Phase 2 — Agents & Ailments ✅ Complete
 - Layout: add site navigation (header nav) to the shared server-side JSX layout; all routes render inside it
 - Basic CSS (custom properties, reset, typography), mobile-first and responsive from the start
 - SQLite database + migrations (`agents`, `ailments` tables)
