@@ -4,7 +4,13 @@ import { Header } from './Header.js'
 import { Main } from './Main.js'
 import { Footer } from './Footer.js'
 
-export const Layout = ({ title, children }: { title: string; children?: Child }) => (
+type LayoutProps = {
+  title: string
+  path: string
+  children?: Child
+}
+
+export const Layout = ({ title, path, children }: LayoutProps) => (
   <>
     {raw('<!DOCTYPE html>')}
     <html lang="en">
@@ -15,7 +21,7 @@ export const Layout = ({ title, children }: { title: string; children?: Child })
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
-        <Header />
+        <Header path={path} />
         <Main>{children}</Main>
         <Footer />
       </body>

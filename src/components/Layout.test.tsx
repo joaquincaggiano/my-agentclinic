@@ -3,12 +3,13 @@ import { Footer } from './Footer.js'
 import { Header } from './Header.js'
 import { Layout } from './Layout.js'
 import { Main } from './Main.js'
+import { render } from '../testing.js'
 
-const render = async (node: unknown) => String(await (node as { toString(): string | Promise<string> }).toString())
+const path = '/agents'
 
 describe('Header', () => {
   it('links the site name to the home page', async () => {
-    const html = await render(<Header />)
+    const html = await render(<Header path="/" />)
     expect(html).toContain('<header class="site-header">')
     expect(html).toContain('<a class="site-name" href="/">AgentClinic</a>')
   })
@@ -31,7 +32,7 @@ describe('Footer', () => {
 
 describe('Layout', () => {
   it('renders a complete HTML document', async () => {
-    const html = await render(<Layout title="Test Page"><p>content</p></Layout>)
+    const html = await render(<Layout title="Test Page" path={path}><p>content</p></Layout>)
     expect(html).toMatch(/^<!DOCTYPE html>/)
     expect(html).toContain('<html lang="en">')
     expect(html).toContain('<meta charset="utf-8"/>')
@@ -41,7 +42,7 @@ describe('Layout', () => {
   })
 
   it('places header, main and footer in order, with children inside main', async () => {
-    const html = await render(<Layout title="T"><p>content</p></Layout>)
+    const html = await render(<Layout title="T" path={path}><p>content</p></Layout>)
     const header = html.indexOf('<header')
     const main = html.indexOf('<main')
     const footer = html.indexOf('<footer')
@@ -51,8 +52,13 @@ describe('Layout', () => {
     expect(html).toMatch(/<main[^>]*><p>content<\/p><\/main>/)
   })
 
+  it('passes the path through to the navigation', async () => {
+    const html = await render(<Layout title="T" path="/ailments" />)
+    expect(html).toContain('aria-current="page">Ailments</a>')
+  })
+
   it('escapes the title', async () => {
-    const html = await render(<Layout title="<script>x</script>" />)
+    const html = await render(<Layout title="<script>x</script>" path={path} />)
     expect(html).not.toContain('<title><script>')
     expect(html).toContain('&lt;script&gt;')
   })

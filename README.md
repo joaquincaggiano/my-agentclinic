@@ -18,3 +18,14 @@ npm start          # run the compiled build
 npm test           # run Vitest tests
 npm run typecheck  # tsc --noEmit
 ```
+
+## Data
+
+AgentClinic uses SQLite (`better-sqlite3`). On startup it creates `data/agentclinic.db` (override with `DATABASE_PATH`), applies the SQL files in `migrations/` and seeds fictional agents and ailments if the tables are empty. Delete `data/` to reset.
+
+## Routes
+
+- `/` home
+- `/agents` list of agents
+- `/agents/:id` agent profile with presenting complaints
+- `/ailments` list of ailments
